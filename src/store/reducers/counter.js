@@ -1,36 +1,32 @@
+import * as actionTypes from '../actions';
+// actionTypes is an object that has all our consts as properties
+
 const initialState = {
-    counter: 0,
-    results: []
+    counter: 0
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case 'INCREMENT':
+        case actionTypes.INCREMENT:
             return {
                 ...state,
                 // overwrites counter only
                 counter: state.counter + 1
             }
-        case 'DECREMENT':
+        case actionTypes.DECREMENT:
             return {
                 ...state,
                 counter: state.counter - 1
             }
-        case 'ADD':
+        case actionTypes.ADD:
             return {
                 ...state,
                 counter: state.counter + action.val
             }
-        case 'SUBTRACT':
+        case actionTypes.SUBTRACT:
             return {
                 ...state,
                 counter: state.counter - action.val
-            }
-        case 'STORE_RESULT':
-            return {
-                ...state,
-                // push manipulates original value, concat returns a new array with the old array plus the arguement added to concat - don't use push
-                results: state.results.concat({ id: new Date(), value: state.counter })
             }
         default: 
             return state;
